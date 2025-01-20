@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Ticket Booking</title>
+    <style>
+        body {
+            background-color: white;
+            margin: 0;
+            font-size: 20px;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+        .content {
+            background-color: white;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .content h4 {
+            margin-bottom: 20px;
+        }
+        .content input,
+        .content select {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .content button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .content button:hover {
+            background-color: #0056b3;
+        }
+        button a {
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <body background="firstback.png"></body>
+        <h4>Train Ticket Booking</h4>
+        <form id="bookingForm">
+            <input type="text" id="name" placeholder="Enter your name" required>
+            <input type="tel" id="phone" placeholder="Enter your phone number" pattern="[0-9]{10}" required>
+            <input type="text" id="fromAddress" placeholder="Enter starting address" required>
+            <input type="text" id="toAddress" placeholder="Enter destination address" required>
+            <select id="ticketType" required>
+                <option value="" disabled selected>Select ticket type</option>
+                <option value="e-ticket">E-Ticket</option>
+                <option value="platform-ticket">Platform Ticket</option>
+            </select>
+            <div>
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.getElementById('bookingForm').onsubmit = function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const fromAddress = document.getElementById('fromAddress').value.trim();
+            const toAddress = document.getElementById('toAddress').value.trim();
+            const ticketType = document.getElementById('ticketType').value;
+
+            if (name && phone && fromAddress && toAddress && ticketType) {
+                localStorage.setItem('name', name);
+                localStorage.setItem('phone', phone);
+                localStorage.setItem('fromAddress', fromAddress);
+                localStorage.setItem('toAddress', toAddress);
+                localStorage.setItem('ticketType', ticketType);
+                location.href = 'second.html';
+            } else {
+                console.error("Please fill out all fields.");
+            }
+        };
+    </script>
+</body>
+</html>

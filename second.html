@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Quota</title>
+    <style>
+        body {
+            background-color: white;
+            margin: 0px;
+            font-size: 20px;
+            padding: 0px;
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+        .content {
+            background-color: white;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .content h4 {
+            margin-bottom: 20px;
+        }
+        .content input,
+        .content select {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .content button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .content button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <body background="secondback.png"></body>
+    <div class="content">
+        <h4>Select Quota & Train Details</h4>
+        <form id="quotaForm">
+            <select id="quota" required>
+                <option value="" disabled selected>Select quota</option>
+                <option value="general">General</option>
+                <option value="physically-handicap">Physically Handicap</option>
+                <option value="ladies">Ladies</option>
+            </select>
+
+            <input type="text" id="trainNumber" placeholder="Enter train number" required>
+
+            <input type="text" id="class" placeholder="Enter class (e.g., Sleeper, AC, 2nd Class)" required>
+            <div>
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.getElementById('quotaForm').onsubmit = function(event) {
+            event.preventDefault();
+            const quota = document.getElementById('quota').value;
+            const trainNumber = document.getElementById('trainNumber').value;
+            const travelClass = document.getElementById('class').value;
+
+            if (quota && trainNumber && travelClass) {
+                localStorage.setItem('quota', quota);
+                localStorage.setItem('trainNumber', trainNumber);
+                localStorage.setItem('travelClass', travelClass);
+                location.href = 'third.html';
+            } else {
+                console.error("Please fill out all fields.");
+            }
+        };
+    </script>
+</body>
+</html>

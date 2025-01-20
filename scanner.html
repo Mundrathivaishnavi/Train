@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan for Payment</title>
+    <style>
+        body {
+            background-color: white;
+            margin: 0;
+            font-size: 20px;
+            padding: 20;
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+        .content {
+            background-color: white;
+            border-radius: 20px;
+            padding: 100px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .content h4 {
+            margin-bottom: 20px;
+        }
+        .scanners img {
+            width: 210px;
+            height: 200px;
+            margin: 10px;
+        }
+        .content button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .content button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <body background="scannerback.png"></body>
+    <div class="content">
+        <h4>Scan Now</h4>
+        <div class="scanners">
+            <img src="Qr.jpg" alt="PhonePe Scanner">
+        </div>
+        <button id="proceedButton">Proceed</button>
+    </div>
+    <script>
+        document.getElementById('proceedButton').onclick = function() {
+            location.href = 'success.html'; 
+        };
+    </script>
+</body>
+</html>

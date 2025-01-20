@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful</title>
+    <style>
+        body {
+            background-color: white;
+            margin: 0;
+            font-size: 20px;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+        .content {
+            background-color: white;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .content h4 {
+            margin-bottom: 20px;
+            color: green;
+        }
+        .content button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .content button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <body background="successback.png"></body>
+    <div class="content">
+        <h4>Payment Successful!</h4>
+        <p>Your payment has been successfully processed.</p>
+        <button id="downloadButton">Download Your Ticket</button>
+    </div>
+    <script>
+        document.getElementById('downloadButton').onclick = function() {
+            const receiptData = `
+                Name: ${localStorage.getItem('name')}
+                Phone: ${localStorage.getItem('phone')}
+                Date: ${new Date().toLocaleDateString()}
+                From: ${localStorage.getItem('fromAddress')}
+                To: ${localStorage.getItem('toAddress')}
+                Train Number: ${localStorage.getItem('trainNumber')}
+                Class: ${localStorage.getItem('travelClass')}
+                Payment: Successful
+                Quota: ${localStorage.getItem('quota')}
+                Ticket Type: ${localStorage.getItem('ticketType')}
+                Payment Mode: ${localStorage.getItem('paymentMode')}
+            `;
+
+            const blob = new Blob([receiptData], { type: 'text/plain' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'ticket_receipt.txt';
+            link.click();
+        };
+    </script>
+</body>
+</html>
